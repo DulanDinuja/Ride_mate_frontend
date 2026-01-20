@@ -35,9 +35,9 @@ class _KycVerificationScreenState extends State<KycVerificationScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const Text('Verify your identity', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+                const Text('Complete KYC to Start Rides', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
                 const SizedBox(height: 8),
-                const Text('Upload NIC and take selfie for verification', style: TextStyle(color: Colors.grey)),
+                const Text('Upload your documents to verify your identity and start offering rides', style: TextStyle(color: Colors.grey)),
                 const SizedBox(height: 32),
                 
                 TextFormField(
@@ -195,7 +195,7 @@ class _KycVerificationScreenState extends State<KycVerificationScreen> {
       context: context,
       builder: (context) => AlertDialog(
         title: const Text('Skip KYC Verification?'),
-        content: const Text('You can complete KYC verification later from your profile. Some features may be limited without verification.'),
+        content: const Text('You can join rides as a passenger, but you won\'t be able to start rides until you complete KYC verification. You can complete this later from your profile.'),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),

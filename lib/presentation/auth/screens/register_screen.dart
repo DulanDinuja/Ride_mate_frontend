@@ -141,18 +141,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ),
                               const SizedBox(height: 8),
                               CheckboxListTile(
-                                title: const Text('Offer rides as Driver'),
-                                subtitle: const Text('Share your vehicle and earn'),
+                                title: const Text('Start rides (Driver)'),
+                                subtitle: const Text('Share costs by offering rides'),
                                 value: _isDriver,
                                 onChanged: (v) => setState(() => _isDriver = v ?? false),
-                                contentPadding: EdgeInsets.zero,
-                                activeColor: const Color(0xFF4CAF50),
-                              ),
-                              CheckboxListTile(
-                                title: const Text('Find rides as Passenger'),
-                                subtitle: const Text('Book affordable rides'),
-                                value: _isPassenger,
-                                onChanged: (v) => setState(() => _isPassenger = v ?? false),
                                 contentPadding: EdgeInsets.zero,
                                 activeColor: const Color(0xFF4CAF50),
                               ),
@@ -201,32 +193,34 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   Future<void> _handleRegister() async {
-    if (_formKey.currentState!.validate() && (_isDriver || _isPassenger)) {
-      final roles = <String>[];
-      if (_isDriver) roles.add(AppConstants.roleDriver);
-      if (_isPassenger) roles.add(AppConstants.rolePassenger);
-
+    if (_formKey.currentState!.validate()) {
       final success = await context.read<AuthProvider>().register(
             phoneNumber: _phoneController.text,
             email: _emailController.text,
             password: _passwordController.text,
             fullName: _nameController.text,
-            roles: roles,
+            wantsToStartRides: _isDriver,
           );
 
       if (success && mounted) {
-        Navigator.pushReplacement(
-          context,
-          PageRouteBuilder(
-            pageBuilder: (context, animation, secondaryAnimation) => const KycVerificationScreen(),
-            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-              return SlideTransition(
-                position: animation.drive(Tween(begin: const Offset(1.0, 0.0), end: Offset.zero)),
-                child: child,
-              );
-            },
-          ),
-        );
+        if (_isDriver) {
+          // Navigate to KYC for users who want to start rides
+          Navigator.pushReplacement(
+            context,
+            PageRouteBuilder(
+              pageBuilder: (context, animation, secondaryAnimation) => const KycVerificationScreen(),
+              transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                return SlideTransition(
+                  position: animation.drive(Tween(begin: const Offset(1.0, 0.0), end: Offset.zero)),
+                  child: child,
+                );
+              },
+            ),
+          );
+        } else {
+          // Navigate directly to dashboard for passenger-only users
+          Navigator.pushReplacementNamed(context, '/dashboard');
+        }
       }
     }
   }

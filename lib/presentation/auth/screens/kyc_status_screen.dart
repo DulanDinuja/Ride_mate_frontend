@@ -107,6 +107,11 @@ class _KycStatusScreenState extends State<KycStatusScreen> {
     String statusText;
 
     switch (kyc.status) {
+      case KycStatus.notSubmitted:
+        statusColor = Colors.grey;
+        statusIcon = Icons.info_outline;
+        statusText = 'Not Submitted';
+        break;
       case KycStatus.pending:
         statusColor = Colors.orange;
         statusIcon = Icons.pending;
@@ -211,6 +216,8 @@ class _KycStatusScreenState extends State<KycStatusScreen> {
 
   String _getStatusDescription(KycStatus status) {
     switch (status) {
+      case KycStatus.notSubmitted:
+        return 'KYC verification not started yet';
       case KycStatus.pending:
         return 'Your documents are in queue for review';
       case KycStatus.underReview:

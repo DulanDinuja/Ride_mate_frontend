@@ -89,6 +89,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
       statusIcon = Icons.warning;
     } else {
       switch (kycProvider.kycData!.status) {
+        case KycStatus.notSubmitted:
+          subtitle = 'Not submitted';
+          statusColor = Colors.grey;
+          statusIcon = Icons.info_outline;
+          break;
         case KycStatus.pending:
           subtitle = 'Pending review';
           statusColor = Colors.orange;

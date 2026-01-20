@@ -51,6 +51,7 @@ class KycModel {
 }
 
 enum KycStatus {
+  notSubmitted,
   pending,
   approved,
   rejected,

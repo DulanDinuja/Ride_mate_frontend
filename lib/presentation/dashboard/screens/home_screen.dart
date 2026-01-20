@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../rides/screens/offer_ride_screen.dart';
+import '../../rides/screens/find_ride_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -41,9 +43,9 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 16),
             Row(
               children: [
-                Expanded(child: _buildActionCard(Icons.directions_car, 'Offer Ride', Colors.green)),
+                Expanded(child: _buildActionCard(context, Icons.directions_car, 'Offer Ride', Colors.green, const OfferRideScreen())),
                 const SizedBox(width: 16),
-                Expanded(child: _buildActionCard(Icons.search, 'Find Ride', Colors.blue)),
+                Expanded(child: _buildActionCard(context, Icons.search, 'Find Ride', Colors.blue, const FindRideScreen())),
               ],
             ),
           ],
@@ -52,10 +54,10 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildActionCard(IconData icon, String label, Color color) {
+  Widget _buildActionCard(BuildContext context, IconData icon, String label, Color color, Widget screen) {
     return Card(
       child: InkWell(
-        onTap: () {},
+        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => screen)),
         child: Padding(
           padding: const EdgeInsets.all(24),
           child: Column(

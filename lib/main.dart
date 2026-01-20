@@ -3,8 +3,18 @@ import 'package:provider/provider.dart';
 import 'core/themes/app_theme.dart';
 import 'presentation/auth/providers/auth_provider.dart';
 import 'presentation/auth/providers/kyc_provider.dart';
-import 'presentation/rides/providers/ride_provider.dart';
+import 'presentation/providers/user_provider.dart';
+import 'presentation/providers/ride_provider.dart';
 import 'presentation/auth/screens/splash_screen.dart';
+import 'presentation/dashboard/screens/main_dashboard.dart';
+import 'presentation/auth/screens/login_screen.dart';
+import 'presentation/auth/screens/register_screen.dart';
+import 'presentation/auth/screens/kyc_verification_screen.dart';
+import 'presentation/rides/screens/create_ride_screen.dart';
+import 'presentation/rides/screens/ride_discovery_screen.dart';
+import 'presentation/rides/screens/offer_ride_screen.dart';
+import 'presentation/rides/screens/find_ride_screen.dart';
+import 'presentation/profile/screens/profile_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,13 +30,25 @@ class RideMateApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => KycProvider()),
+        ChangeNotifierProvider(create: (_) => UserProvider()),
         ChangeNotifierProvider(create: (_) => RideProvider()),
       ],
       child: MaterialApp(
-        title: 'RideMate',
+        title: 'RideMate - Professional Ride Sharing',
         theme: AppTheme.lightTheme,
         debugShowCheckedModeBanner: false,
         home: const SplashScreen(),
+        routes: {
+          '/login': (context) => const LoginScreen(),
+          '/register': (context) => const RegisterScreen(),
+          '/kyc': (context) => const KycVerificationScreen(),
+          '/dashboard': (context) => const MainDashboard(),
+          '/create-ride': (context) => const CreateRideScreen(),
+          '/discover-rides': (context) => const RideDiscoveryScreen(),
+          '/offer-ride': (context) => const OfferRideScreen(),
+          '/find-ride': (context) => const FindRideScreen(),
+          '/profile': (context) => const ProfileScreen(),
+        },
       ),
     );
   }

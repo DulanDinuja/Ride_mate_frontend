@@ -20,7 +20,7 @@ class RideModel {
   factory RideModel.fromJson(Map<String, dynamic> json) {
     return RideModel(
       id: json['id'],
-      starterId: json['starterId'] ?? json['driverId'],
+      starterId: json['starterId'] ?? json['driverId'], // backward compatibility
       origin: json['origin'],
       destination: json['destination'],
       dateTime: DateTime.parse(json['dateTime']),
