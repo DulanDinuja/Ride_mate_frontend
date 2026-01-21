@@ -1,6 +1,30 @@
-# RideMate - Car Pooling System
+# RideMate - Car Pooling System 🚗✨
 
-Sustainable commuting solution for Sri Lanka with cost-sharing, real-time tracking, and KYC verification.
+Sustainable commuting solution for Sri Lanka with cost-sharing, real-time tracking, and **premium glass liquid UI**.
+
+## 🎨 NEW: Glass Liquid UI Design
+
+**Your app now features a stunning glassmorphism interface!**
+
+### Visual Features
+- ✨ Glass morphism effects with backdrop blur
+- ✨ Smooth liquid animations
+- ✨ Interactive particle systems  
+- ✨ Premium button press effects
+- ✨ Animated floating backgrounds
+- ✨ Responsive touch feedback
+
+### Quick Start
+```bash
+flutter pub get
+flutter run
+```
+
+### Documentation
+- 📘 **GLASS_UI_IMPLEMENTATION.md** - Full implementation details
+- 📗 **GLASS_UI_QUICK_START.md** - How to run and test
+- 📙 **GLASS_UI_COMPONENTS_REFERENCE.md** - Component usage guide
+- 📕 **GLASS_UI_SUMMARY.md** - Quick overview
 
 ## Features Implemented (Phase 1 MVP)
 
