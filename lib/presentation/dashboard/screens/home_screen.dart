@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../core/constants/app_colors.dart';
 import '../../rides/screens/offer_ride_screen.dart';
 import '../../rides/screens/find_ride_screen.dart';
 
@@ -43,9 +44,9 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 16),
             Row(
               children: [
-                Expanded(child: _buildActionCard(context, Icons.directions_car, 'Offer Ride', Colors.green, const OfferRideScreen())),
+                Expanded(child: _buildActionCard(context, Icons.directions_car, 'Offer Ride', AppColors.accent, const OfferRideScreen())),
                 const SizedBox(width: 16),
-                Expanded(child: _buildActionCard(context, Icons.search, 'Find Ride', Colors.blue, const FindRideScreen())),
+                Expanded(child: _buildActionCard(context, Icons.search, 'Find Ride', AppColors.cyan, const FindRideScreen())),
               ],
             ),
           ],

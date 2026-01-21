@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../core/constants/app_colors.dart';
 import 'login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -61,7 +62,11 @@ class _SplashScreenState extends State<SplashScreen>
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [Color(0xFF2196F3), Color(0xFF21CBF3)],
+            colors: [
+              AppColors.primary,
+              AppColors.secondary,
+              AppColors.primaryDark,
+            ],
           ),
         ),
         child: Center(
@@ -78,23 +83,37 @@ class _SplashScreenState extends State<SplashScreen>
                       Container(
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.2),
+                          gradient: const LinearGradient(
+                            colors: [AppColors.cyan, AppColors.cyanBright],
+                          ),
                           shape: BoxShape.circle,
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppColors.cyan.withOpacity(0.5),
+                              blurRadius: 30,
+                              spreadRadius: 5,
+                            ),
+                          ],
                         ),
                         child: const Icon(
                           Icons.directions_car,
                           size: 80,
-                          color: Colors.white,
+                          color: AppColors.textPrimary,
                         ),
                       ),
                       const SizedBox(height: 32),
-                      const Text(
-                        'RideMate',
-                        style: TextStyle(
-                          fontSize: 36,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          letterSpacing: 1.2,
+                      ShaderMask(
+                        shaderCallback: (bounds) => const LinearGradient(
+                          colors: [AppColors.cyan, AppColors.accentLight],
+                        ).createShader(bounds),
+                        child: const Text(
+                          'RideMate',
+                          style: TextStyle(
+                            fontSize: 36,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.textPrimary,
+                            letterSpacing: 1.2,
+                          ),
                         ),
                       ),
                       const SizedBox(height: 12),
@@ -102,7 +121,7 @@ class _SplashScreenState extends State<SplashScreen>
                         'Sustainable Commuting Solution',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.white70,
+                          color: AppColors.textSecondary,
                           fontWeight: FontWeight.w300,
                         ),
                       ),
@@ -111,7 +130,7 @@ class _SplashScreenState extends State<SplashScreen>
                         width: 40,
                         height: 40,
                         child: CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                          valueColor: AlwaysStoppedAnimation<Color>(AppColors.cyan),
                           strokeWidth: 3,
                         ),
                       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../core/constants/app_colors.dart';
 import 'cost_sharing_screen.dart';
 
 class OfferRideScreen extends StatefulWidget {
@@ -104,7 +105,7 @@ class _OfferRideScreenState extends State<OfferRideScreen> {
             if (totalCost > 0) ...[
               const SizedBox(height: 16),
               Card(
-                color: Colors.green.shade50,
+                color: AppColors.success.withOpacity(0.1),
                 child: Padding(
                   padding: const EdgeInsets.all(16),
                   child: Column(
@@ -113,7 +114,7 @@ class _OfferRideScreenState extends State<OfferRideScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const Text('Cost per person:'),
-                          Text('LKR ${costPerPerson.toStringAsFixed(2)}', style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.green)),
+                          Text('LKR ${costPerPerson.toStringAsFixed(2)}', style: const TextStyle(fontWeight: FontWeight.bold, color: AppColors.success)),
                         ],
                       ),
                       const SizedBox(height: 8),

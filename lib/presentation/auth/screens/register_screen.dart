@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../core/constants/app_colors.dart';
 import '../providers/auth_provider.dart';
-import '../../../core/constants/app_constants.dart';
 import 'kyc_verification_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -29,7 +29,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Color(0xFF4CAF50), Color(0xFFE8F5E8)],
+            colors: [
+              AppColors.primaryDark,
+              AppColors.primary,
+              AppColors.secondary,
+            ],
           ),
         ),
         child: SafeArea(
@@ -43,7 +47,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   children: [
                     IconButton(
                       onPressed: () => Navigator.pop(context),
-                      icon: const Icon(Icons.arrow_back, color: Colors.white),
+                      icon: const Icon(Icons.arrow_back, color: AppColors.cyan),
                     ),
                     const Expanded(
                       child: Text(
@@ -52,7 +56,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          color: AppColors.textPrimary,
                         ),
                       ),
                     ),
@@ -63,11 +67,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 Container(
                   padding: const EdgeInsets.all(24),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: AppColors.surface,
                     borderRadius: BorderRadius.circular(20),
+                    border: Border.all(
+                      color: AppColors.secondary,
+                      width: 1.5,
+                    ),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
+                        color: AppColors.cyan.withOpacity(0.1),
                         blurRadius: 20,
                         offset: const Offset(0, 10),
                       ),
@@ -124,9 +132,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         Container(
                           padding: const EdgeInsets.all(16),
                           decoration: BoxDecoration(
-                            color: Colors.grey.shade50,
+                            color: AppColors.primaryLight,
                             borderRadius: BorderRadius.circular(12),
-                            border: Border.all(color: Colors.grey.shade200),
+                            border: Border.all(color: AppColors.secondary),
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -136,7 +144,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
-                                  color: Colors.black87,
+                                  color: AppColors.textPrimary,
                                 ),
                               ),
                               const SizedBox(height: 8),
@@ -146,7 +154,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 value: _isDriver,
                                 onChanged: (v) => setState(() => _isDriver = v ?? false),
                                 contentPadding: EdgeInsets.zero,
-                                activeColor: const Color(0xFF4CAF50),
+                                activeColor: AppColors.accent,
                               ),
                             ],
                           ),
@@ -156,21 +164,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           builder: (context, auth, _) {
                             return ElevatedButton(
                               onPressed: auth.isLoading ? null : _handleRegister,
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFF4CAF50),
-                                foregroundColor: Colors.white,
-                                padding: const EdgeInsets.symmetric(vertical: 16),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                              ),
                               child: auth.isLoading
                                   ? const SizedBox(
                                       height: 20,
                                       width: 20,
                                       child: CircularProgressIndicator(
                                         strokeWidth: 2,
-                                        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                                        valueColor: AlwaysStoppedAnimation<Color>(AppColors.textPrimary),
                                       ),
                                     )
                                   : const Text(

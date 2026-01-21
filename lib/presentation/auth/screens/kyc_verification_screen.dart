@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'dart:io';
+import '../../../core/constants/app_colors.dart';
 import '../providers/kyc_provider.dart';
 import '../providers/auth_provider.dart';
 import '../../../core/utils/kyc_validator.dart';
@@ -37,7 +38,7 @@ class _KycVerificationScreenState extends State<KycVerificationScreen> {
               children: [
                 const Text('Complete KYC to Start Rides', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
                 const SizedBox(height: 8),
-                const Text('Upload your documents to verify your identity and start offering rides', style: TextStyle(color: Colors.grey)),
+                const Text('Upload your documents to verify your identity and start offering rides', style: TextStyle(color: AppColors.textSecondary)),
                 const SizedBox(height: 32),
                 
                 TextFormField(
@@ -66,13 +67,13 @@ class _KycVerificationScreenState extends State<KycVerificationScreen> {
                   Container(
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: Colors.red.shade50,
+                      color: AppColors.error.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: Colors.red.shade200),
+                      border: Border.all(color: AppColors.error),
                     ),
                     child: Text(
                       kycProvider.error!,
-                      style: TextStyle(color: Colors.red.shade700),
+                      style: const TextStyle(color: AppColors.error),
                     ),
                   ),
                 ],
@@ -109,12 +110,12 @@ class _KycVerificationScreenState extends State<KycVerificationScreen> {
               ? Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.add_a_photo, size: 48, color: Colors.grey.shade400),
+                    const Icon(Icons.add_a_photo, size: 48, color: AppColors.cyan),
                     const SizedBox(height: 8),
-                    Text(label, style: TextStyle(color: Colors.grey.shade600)),
+                    Text(label, style: const TextStyle(color: AppColors.textPrimary)),
                     const SizedBox(height: 4),
                     Text('Tap to ${label.contains('Selfie') ? 'capture' : 'upload'}', 
-                         style: TextStyle(fontSize: 12, color: Colors.grey.shade500)),
+                         style: const TextStyle(fontSize: 12, color: AppColors.textSecondary)),
                   ],
                 )
               : Stack(
@@ -128,10 +129,10 @@ class _KycVerificationScreenState extends State<KycVerificationScreen> {
                       right: 8,
                       child: Container(
                         decoration: const BoxDecoration(
-                          color: Colors.green,
+                          color: AppColors.success,
                           shape: BoxShape.circle,
                         ),
-                        child: const Icon(Icons.check, color: Colors.white, size: 20),
+                        child: const Icon(Icons.check, color: AppColors.textPrimary, size: 20),
                       ),
                     ),
                   ],
@@ -180,7 +181,7 @@ class _KycVerificationScreenState extends State<KycVerificationScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('KYC submitted successfully! We will review and notify you.'),
-          backgroundColor: Colors.green,
+          backgroundColor: AppColors.success,
         ),
       );
       Navigator.pushReplacement(

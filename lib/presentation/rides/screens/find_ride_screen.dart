@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../core/constants/app_colors.dart';
 import '../../providers/ride_provider.dart';
 
 class FindRideScreen extends StatefulWidget {
@@ -62,7 +63,7 @@ class _FindRideScreenState extends State<FindRideScreen> {
         children: [
           Container(
             padding: const EdgeInsets.all(16),
-            color: Colors.grey.shade100,
+            color: AppColors.surface,
             child: Column(
               children: [
                 Row(
@@ -99,7 +100,7 @@ class _FindRideScreenState extends State<FindRideScreen> {
                         child: Container(
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey),
+                            border: Border.all(color: AppColors.secondary),
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Row(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../core/constants/app_colors.dart';
 import '../providers/kyc_provider.dart';
 import '../providers/auth_provider.dart';
 import '../../../data/models/kyc_model.dart';
@@ -48,16 +49,16 @@ class _KycStatusScreenState extends State<KycStatusScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.verified_user_outlined, size: 80, color: Colors.grey.shade400),
+            const Icon(Icons.verified_user_outlined, size: 80, color: AppColors.textSecondary),
             const SizedBox(height: 24),
             const Text(
               'KYC Not Submitted',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
-            Text(
+            const Text(
               'Complete your KYC verification to access all features',
-              style: TextStyle(color: Colors.grey.shade600),
+              style: TextStyle(color: AppColors.textSecondary),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 32),
@@ -108,27 +109,27 @@ class _KycStatusScreenState extends State<KycStatusScreen> {
 
     switch (kyc.status) {
       case KycStatus.notSubmitted:
-        statusColor = Colors.grey;
+        statusColor = AppColors.textSecondary;
         statusIcon = Icons.info_outline;
         statusText = 'Not Submitted';
         break;
       case KycStatus.pending:
-        statusColor = Colors.orange;
+        statusColor = AppColors.warning;
         statusIcon = Icons.pending;
         statusText = 'Pending Review';
         break;
       case KycStatus.underReview:
-        statusColor = Colors.blue;
+        statusColor = AppColors.cyan;
         statusIcon = Icons.hourglass_empty;
         statusText = 'Under Review';
         break;
       case KycStatus.approved:
-        statusColor = Colors.green;
+        statusColor = AppColors.success;
         statusIcon = Icons.verified;
         statusText = 'Approved';
         break;
       case KycStatus.rejected:
-        statusColor = Colors.red;
+        statusColor = AppColors.error;
         statusIcon = Icons.cancel;
         statusText = 'Rejected';
         break;
@@ -159,7 +160,7 @@ class _KycStatusScreenState extends State<KycStatusScreen> {
             const SizedBox(height: 8),
             Text(
               _getStatusDescription(kyc.status),
-              style: TextStyle(color: Colors.grey.shade600),
+              style: const TextStyle(color: AppColors.textSecondary),
               textAlign: TextAlign.center,
             ),
           ],
@@ -200,9 +201,9 @@ class _KycStatusScreenState extends State<KycStatusScreen> {
             width: 120,
             child: Text(
               label,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.w500,
-                color: Colors.grey.shade700,
+                color: AppColors.textSecondary,
               ),
             ),
           ),

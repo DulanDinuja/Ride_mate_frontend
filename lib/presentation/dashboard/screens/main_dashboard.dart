@@ -29,8 +29,6 @@ class _MainDashboardState extends State<MainDashboard> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) => setState(() => _currentIndex = index),
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: const Color(0xFF4CAF50),
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
@@ -40,7 +38,6 @@ class _MainDashboardState extends State<MainDashboard> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const CreateRideScreen())),
-        backgroundColor: const Color(0xFF4CAF50),
         child: const Icon(Icons.add),
       ),
     );

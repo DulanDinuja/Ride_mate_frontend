@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../core/constants/app_colors.dart';
 import '../providers/auth_provider.dart';
 import '../../dashboard/screens/main_dashboard.dart';
 import 'register_screen.dart';
@@ -25,7 +26,11 @@ class _LoginScreenState extends State<LoginScreen> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Color(0xFF2196F3), Color(0xFFE3F2FD)],
+            colors: [
+              AppColors.primaryDark,
+              AppColors.primary,
+              AppColors.secondary,
+            ],
           ),
         ),
         child: SafeArea(
@@ -40,31 +45,38 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Container(
                     padding: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      gradient: const LinearGradient(
+                        colors: [AppColors.cyan, AppColors.cyanBright],
+                      ),
                       shape: BoxShape.circle,
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
-                          blurRadius: 20,
-                          offset: const Offset(0, 10),
+                          color: AppColors.cyan.withOpacity(0.5),
+                          blurRadius: 30,
+                          spreadRadius: 5,
                         ),
                       ],
                     ),
                     child: const Icon(
                       Icons.directions_car,
                       size: 60,
-                      color: Color(0xFF2196F3),
+                      color: AppColors.textPrimary,
                     ),
                   ),
                 ),
                 const SizedBox(height: 32),
-                const Text(
-                  'Welcome Back!',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                ShaderMask(
+                  shaderCallback: (bounds) => const LinearGradient(
+                    colors: [AppColors.cyan, AppColors.accentLight],
+                  ).createShader(bounds),
+                  child: const Text(
+                    'Welcome Back!',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.textPrimary,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 8),
@@ -73,18 +85,22 @@ class _LoginScreenState extends State<LoginScreen> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,
-                    color: Colors.white70,
+                    color: AppColors.textSecondary,
                   ),
                 ),
                 const SizedBox(height: 48),
                 Container(
                   padding: const EdgeInsets.all(24),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: AppColors.surface,
                     borderRadius: BorderRadius.circular(20),
+                    border: Border.all(
+                      color: AppColors.secondary,
+                      width: 1.5,
+                    ),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
+                        color: AppColors.cyan.withOpacity(0.1),
                         blurRadius: 20,
                         offset: const Offset(0, 10),
                       ),
@@ -132,21 +148,13 @@ class _LoginScreenState extends State<LoginScreen> {
                               children: [
                                 ElevatedButton(
                                   onPressed: auth.isLoading ? null : _handleLogin,
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: const Color(0xFF2196F3),
-                                    foregroundColor: Colors.white,
-                                    padding: const EdgeInsets.symmetric(vertical: 16),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                  ),
                                   child: auth.isLoading
                                       ? const SizedBox(
                                           height: 20,
                                           width: 20,
                                           child: CircularProgressIndicator(
                                             strokeWidth: 2,
-                                            valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                                            valueColor: AlwaysStoppedAnimation<Color>(AppColors.textPrimary),
                                           ),
                                         )
                                       : const Text('Sign In', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
@@ -156,13 +164,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                   Container(
                                     padding: const EdgeInsets.all(12),
                                     decoration: BoxDecoration(
-                                      color: Colors.red.shade50,
+                                      color: AppColors.error.withOpacity(0.1),
                                       borderRadius: BorderRadius.circular(8),
-                                      border: Border.all(color: Colors.red.shade200),
+                                      border: Border.all(color: AppColors.error),
                                     ),
                                     child: Text(
                                       auth.error!,
-                                      style: TextStyle(color: Colors.red.shade700),
+                                      style: const TextStyle(color: AppColors.error),
                                       textAlign: TextAlign.center,
                                     ),
                                   ),
@@ -181,7 +189,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     const Text(
                       "Don't have an account? ",
-                      style: TextStyle(color: Colors.white70),
+                      style: TextStyle(color: AppColors.textSecondary),
                     ),
                     TextButton(
                       onPressed: () {
@@ -201,7 +209,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: const Text(
                         'Sign Up',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: AppColors.cyan,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

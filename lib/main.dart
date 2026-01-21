@@ -14,6 +14,7 @@ import 'presentation/rides/screens/create_ride_screen.dart';
 import 'presentation/rides/screens/ride_discovery_screen.dart';
 import 'presentation/rides/screens/offer_ride_screen.dart';
 import 'presentation/rides/screens/find_ride_screen.dart';
+import 'presentation/rides/screens/my_rides_screen.dart';
 import 'presentation/profile/screens/profile_screen.dart';
 
 void main() {
@@ -35,7 +36,9 @@ class RideMateApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'RideMate - Professional Ride Sharing',
-        theme: AppTheme.lightTheme,
+        theme: AppTheme.darkTheme,
+        darkTheme: AppTheme.darkTheme,
+        themeMode: ThemeMode.dark,
         debugShowCheckedModeBanner: false,
         home: const SplashScreen(),
         routes: {
@@ -47,6 +50,7 @@ class RideMateApp extends StatelessWidget {
           '/discover-rides': (context) => const RideDiscoveryScreen(),
           '/offer-ride': (context) => const OfferRideScreen(),
           '/find-ride': (context) => const FindRideScreen(),
+          '/my-rides': (context) => const MyRidesScreen(),
           '/profile': (context) => const ProfileScreen(),
         },
       ),

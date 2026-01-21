@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../core/constants/app_colors.dart';
 
 class ActiveRideScreen extends StatelessWidget {
   const ActiveRideScreen({super.key});
@@ -11,13 +12,13 @@ class ActiveRideScreen extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              color: Colors.grey[300],
+              color: AppColors.surface,
               child: const Center(child: Text('Map View')),
             ),
           ),
           Container(
             padding: const EdgeInsets.all(16),
-            color: Colors.white,
+            color: AppColors.primary,
             child: Column(
               children: [
                 Row(
@@ -31,7 +32,7 @@ class ActiveRideScreen extends StatelessWidget {
                 const SizedBox(height: 16),
                 ElevatedButton(
                   onPressed: () {},
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                  style: ElevatedButton.styleFrom(backgroundColor: AppColors.error),
                   child: const Text('SOS'),
                 ),
               ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../core/constants/app_colors.dart';
 import '../../auth/providers/auth_provider.dart';
 import '../../auth/providers/kyc_provider.dart';
 import '../../auth/screens/login_screen.dart';
@@ -45,7 +46,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.star, size: 20, color: Colors.amber),
+                        Icon(Icons.star, size: 20, color: AppColors.warning),
                         Text(' 4.8'),
                       ],
                     ),
@@ -66,7 +67,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     MaterialPageRoute(builder: (_) => const LoginScreen()),
                   );
                 },
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                style: ElevatedButton.styleFrom(backgroundColor: AppColors.error),
                 child: const Text('Logout'),
               ),
             ],
@@ -78,40 +79,40 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Widget _buildKycMenuItem(KycProvider kycProvider) {
     String subtitle = 'Loading...';
-    Color statusColor = Colors.grey;
+    Color statusColor = AppColors.textSecondary;
     IconData statusIcon = Icons.hourglass_empty;
 
     if (kycProvider.isLoading) {
       // Keep defaults
     } else if (kycProvider.kycData == null) {
       subtitle = 'Not submitted';
-      statusColor = Colors.orange;
+      statusColor = AppColors.warning;
       statusIcon = Icons.warning;
     } else {
       switch (kycProvider.kycData!.status) {
         case KycStatus.notSubmitted:
           subtitle = 'Not submitted';
-          statusColor = Colors.grey;
+          statusColor = AppColors.textSecondary;
           statusIcon = Icons.info_outline;
           break;
         case KycStatus.pending:
           subtitle = 'Pending review';
-          statusColor = Colors.orange;
+          statusColor = AppColors.warning;
           statusIcon = Icons.pending;
           break;
         case KycStatus.underReview:
           subtitle = 'Under review';
-          statusColor = Colors.blue;
+          statusColor = AppColors.cyan;
           statusIcon = Icons.hourglass_empty;
           break;
         case KycStatus.approved:
           subtitle = 'Verified';
-          statusColor = Colors.green;
+          statusColor = AppColors.success;
           statusIcon = Icons.verified;
           break;
         case KycStatus.rejected:
           subtitle = 'Rejected';
-          statusColor = Colors.red;
+          statusColor = AppColors.error;
           statusIcon = Icons.cancel;
           break;
       }
